@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.Serialization.Formatters;
 
 namespace rensyuu1
 {
@@ -16,19 +17,33 @@ namespace rensyuu1
                 line[s1] = int.Parse(lines[s1]);
             }
             //入れ替え作業
-            for (int s3 = 1; s3 < num - 1; s3++)
+            for (int s2 = 1; s2 < num; s2++)
             {
-                for (int s2 = 0; s2 < num - 1; s2++)
+                //自分より大きい左側の数を見つける
+                for (int s3 = 0; s3 < s2; s3++)
                 {
-                    if (line[s2] > line[s2 + 1])
+                    if (line[s3] > line[s2])
                     {
-                        int x = line[s2];
-                        line[s2] = line[s2 + 1];
-                        line[s2 + 1] = x;
-                        Console.WriteLine("{0} {1} {2} {3} {4} {5}" ,line[0],line[1],line[2], line[3],line[4],line[5]);
+                        int y;
+                        y = line[s2];
+                        //一個ずつずらす
+                        for (int s4 = s2 - 1; s4 >= s3; s4--)
+                        {
+                            line[s4 + 1] = line[s4];
+                        }
+                        line[s3] = y;
+
+
                     }
+
+
                 }
+
+                Console.WriteLine(string.Join(" ", line));
+
+
             }
+
         }
     }
 }
