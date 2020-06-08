@@ -1,0 +1,26 @@
+using System;
+
+namespace rensyuu1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            string[] str = Console.ReadLine().Trim().Split(' ');
+            int[] num1 = new int[n];
+            int[] num2 = new int[n];
+            for (int i1 = 0; i1 < n; i1++)
+            {
+                num1[i1] = int.Parse(str[i1]);
+            }
+
+            for (int i2 = 0; i2 < n; i2++)
+            {
+                num2[i2] = num1[n - i2 - 1];
+            }
+
+            Console.WriteLine(string.Join(" ", num2));
+        }
+    }
+}
