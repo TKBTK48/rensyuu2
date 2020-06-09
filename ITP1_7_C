@@ -1,0 +1,59 @@
+using System;
+
+namespace rensyuu1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] line = Console.ReadLine().Trim().Split(' ');
+            int a = int.Parse(line[0]);
+            int b = int.Parse(line[1]);
+            //箱作り
+            int[,] g = new int[a + 1, b + 1];
+            //読み込み
+            for (int i1 = 0; i1 < a; i1++)
+            {
+                string[] array = Console.ReadLine().Trim().Split(' ');
+                for (int i2 = 0; i2 < b; i2++)
+                {
+                    g[i1, i2] = int.Parse(array[i2]);
+                }
+            }
+            //右端の値
+            for (int i3 = 0; i3 < a; i3++)
+            {
+                g[i3, b] = 0;
+                for (int i4 = 0; i4 < b; i4++)
+                {
+                    g[i3, b] = g[i3, b] + g[i3, i4];
+                }
+            }
+            //下端の値
+            for (int i5 = 0; i5 <= b; i5++)
+            {
+                g[a, i5] = 0;
+                for (int i6 = 0; i6 < a; i6++)
+                {
+                    g[a, i5] = g[a, i5] + g[i6, i5];
+                }
+            }
+            //出力
+            for (int i7 = 0; i7 <= a; i7++)
+            {
+                for (int i8 = 0; i8 <= b; i8++)
+                {
+                    if (i8 == 0)
+                    {
+                        Console.Write($"{g[i7, i8]}");
+                    }
+                    else
+                    {
+                        Console.Write($" {g[i7, i8]}");
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
