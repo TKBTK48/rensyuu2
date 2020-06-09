@@ -1,0 +1,39 @@
+using System;
+namespace rensyuu1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                string[] line = Console.ReadLine().Trim().Split(' ');
+                int n = int.Parse(line[0]);
+                int x = int.Parse(line[1]);
+                int o1 = 0;
+                if (n == 0 && x == 0)
+                {
+                    break;
+                }
+                else if (x / 3 >= n)
+                {
+                    Console.WriteLine(o1);
+                }
+                else
+                {
+                    for (int i1 = n; i1 > x / 3; i1--)
+                    {
+                        for (int i2 = i1 - 1; i2 > x - i1 - i2 ; i2--)
+                        {
+                            if (x - i1 - i2 > 0)
+                            {
+                                o1++;
+                            }
+                        }
+                    }
+                    Console.WriteLine(o1);
+                }
+            }
+        }
+    }
+}
