@@ -1,0 +1,59 @@
+using System;
+
+namespace rensyuu1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                string[] str = Console.ReadLine().Trim().Split(' ');
+                int m = int.Parse(str[0]);
+                int f = int.Parse(str[1]);
+                int r = int.Parse(str[2]);
+                if (m == -1 && f == -1)
+                {
+                    break;
+                }
+                else
+                {
+                    if (m == -1 || f == -1)
+                    {
+                        Console.WriteLine("F");
+                    }
+                    else
+                    {
+                        if (m + f >= 80)
+                        {
+                            Console.WriteLine("A");
+                        }
+                        else if (80 > m + f && m + f >= 65)
+                        {
+                            Console.WriteLine("B");
+                        }
+                        else if (65 > m + f && m + f >= 50)
+                        {
+                            Console.WriteLine("C");
+                        }
+                        else if (50 > m + f && m + f >= 30)
+                        {
+                            if (r >= 50)
+                            {
+                                Console.WriteLine("C");
+                            }
+                            else
+                            {
+                                Console.WriteLine("D");
+                            }
+                        }
+                        else if (30 > m + f)
+                        {
+                            Console.WriteLine("F");
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
