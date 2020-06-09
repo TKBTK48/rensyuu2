@@ -1,0 +1,46 @@
+using System;
+
+namespace rensyuu1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //行列の読み込み
+            string[] line = Console.ReadLine().Trim().Split(' ');
+            int a = int.Parse(line[0]);
+            int b = int.Parse(line[1]);
+            int[,] g1 = new int[a, b];
+            int[] g2 = new int[b];
+            int[] o1 = new int[a];
+            for (int i1 = 0; i1 < a; i1++)
+            {
+                string[] array = Console.ReadLine().Trim().Split(' ');
+                for (int i2 = 0; i2 < b; i2++)
+                {
+                    g1[i1, i2] = int.Parse(array[i2]);
+                }
+            }
+            //列の読み込み
+            for (int i3 = 0; i3 < b; i3++)
+            {
+                g2[i3] = int.Parse(Console.ReadLine());
+            }
+
+            //計算
+            for (int i4 = 0; i4 < a; i4++)
+            {
+                o1[i4] = 0;
+                for (int i5 = 0; i5 < b; i5++)
+                {
+                    int[] o2 = new int[b];
+                    o2[i5] = g1[i4, i5] * g2[i5];
+                    o1[i4] = o1[i4] + o2[i5];
+
+                }
+                Console.WriteLine(o1[i4]);
+
+            }
+        }
+    }
+}
