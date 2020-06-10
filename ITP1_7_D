@@ -1,0 +1,67 @@
+using System;
+
+namespace rensyuu1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //最初の読み込み
+            string[] line1 = Console.ReadLine().Trim().Split(' ');
+            int n = int.Parse(line1[0]);
+            int m = int.Parse(line1[1]);
+            int l = int.Parse(line1[2]);
+            //箱の作成
+            int[,] g1 = new int[n, m];
+            int[,] g2 = new int[m, l];
+            int[,] g3 = new int[n, l];
+            //最初の行列の読み込み
+            for (int i1 = 0; i1 < n; i1++)
+            {
+                string[] line2 = Console.ReadLine().Trim().Split(' ');
+                for (int i2 = 0; i2 < m; i2++)
+                {
+                    g1[i1, i2] = int.Parse(line2[i2]);
+                }
+            }
+            //2番目の行列の読み込み
+            for (int i3 = 0; i3 < m; i3++)
+            {
+                string[] line3 = Console.ReadLine().Trim().Split(' ');
+                for (int i4 = 0; i4 < l; i4++)
+                {
+                    g2[i3, i4] = int.Parse(line3[i4]);
+                }
+            }
+            //計算
+            for (int i5 = 0; i5 < n; i5++)
+            {
+                for (int i6 = 0; i6 < l; i6++)
+                {
+                    g3[i5, i6] = 0;
+                    for (int i7 = 0; i7 < m; i7++)
+                    {
+                        g3[i5, i6] = g3[i5, i6] + g1[i5, i7] * g2[i7, i6];
+                    }
+                }
+            }
+            //出力
+            for (int i8 = 0; i8 < n; i8++)
+            {
+                for (int i9 = 0; i9 < l; i9++)
+                {
+                    if (i9 == 0)
+                    {
+                        Console.Write($"{g3[i8, i9]}");
+                    }
+                    else
+                    {
+                        Console.Write($" {g3[i8, i9]}");
+                    }
+                }
+                Console.WriteLine();
+            }
+
+        }
+    }
+}
