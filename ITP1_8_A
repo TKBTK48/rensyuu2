@@ -1,5 +1,4 @@
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.Design.Serialization;
 
 namespace rensyuu1
@@ -37,10 +36,9 @@ namespace rensyuu1
                     }
                 }
             }
-            for (int i3 = 0; i3 < l; i3++)
-            {
-                Console.Write($"{c[i3]}");
-            }
+
+            string str = new string(c);
+            Console.WriteLine(str);
 
         }
     }
