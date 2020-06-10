@@ -1,0 +1,23 @@
+using System;
+using System.Linq;
+
+namespace AizuOnlineJudge {
+    class Program {
+        static void Main() {
+            var nml = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            var ab = Enumerable.Range(0, 2).Select(i => Enumerable.Range(1, nml[i]).Select(_ => Console.ReadLine().Split().Select(int.Parse).ToArray()).ToArray()).ToArray();
+
+            for (var i = 0; i < nml[0]; ++i) {
+                var c = new long[nml[2]];
+                for (var j = 0; j < nml[1]; ++j) {
+                    for (var k = 0; k < nml[2]; ++k) {
+                        c[k] += ab[0][i][j] * ab[1][j][k];
+                    }
+                }
+
+                Console.WriteLine(string.Join(" ", c));
+            }
+        }
+    }
+}
+
