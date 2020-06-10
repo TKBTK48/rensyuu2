@@ -1,0 +1,47 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.Design.Serialization;
+
+namespace rensyuu1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            //大文字定義
+            char[] bigs = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+            //小文字定義
+            char[] smalls = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            //読み取り長
+            int l = input.Length;
+            //読み取り文字列分解
+            char[] c = input.ToCharArray();
+            for (int i1 = 0; i1 < l; i1++)
+            {
+                //大文字を1文字ずつ確かめて、一致すれば小文字へ
+                for (int i2 = 0; i2 < 26; i2++)
+                {
+                    if (c[i1] == bigs[i2])
+                    {
+                        c[i1] = smalls[i2];
+                    }
+                    //小文字を1文字ずつ確かめて、一致すれば大文字へ
+                    else if (c[i1] == smalls[i2])
+                    {
+                        c[i1] = bigs[i2];
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+            for (int i3 = 0; i3 < l; i3++)
+            {
+                Console.Write($"{c[i3]}");
+            }
+
+        }
+    }
+}
