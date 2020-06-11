@@ -1,0 +1,26 @@
+/// <summary>
+/// フォルダ内の最新datファイルのファイル名を取得します。
+/// </summary>
+/// <param name="folderName">フォルダ名を指定します。</param>
+/// <returns>最新datファイルのファイル名を返します。</returns>
+public string getNewestFileName(string folderName)
+{
+// 指定されたフォルダ内のdatファイル名をすべて取得する
+string[] files = System.IO.Directory.GetFiles(folderName, "*.dat", System.IO.SearchOption.TopDirectoryOnly);
+
+string newestFileName = string.Empty;
+System.DateTime updateTime = System.DateTime.MinValue;
+foreach (string file in files)
+{
+// それぞれのファイルの更新日付を取得する
+System.IO.FileInfo fi = new System.IO.FileInfo(file);
+// 更新日付が最新なら更新日付とファイル名を保存する
+if (fi.LastWriteTime > updateTime)
+{
+updateTime = fi.LastWriteTime;
+newestFileName = file;
+}
+}
+// ファイル名を返す
+return System.IO.Path.GetFileName(newestFileName);
+}
