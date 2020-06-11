@@ -1,0 +1,28 @@
+using System;
+using System.Linq;
+
+namespace rensyuu1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                string str = Console.ReadLine();
+                int l = str.Length;
+                char[] c = str.ToCharArray();
+                string[] c1;
+                Console.WriteLine($"{c[0]}");
+                //for (int i1 = 0; i1 < l; i1++)
+                //{
+                //    c1[0] = ToString(c[0]);
+                //}
+                //int [] num = int.Parse(c1[]);
+
+
+
+            }
+        }
+    }
+}
