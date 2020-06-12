@@ -1,0 +1,53 @@
+using System;
+
+namespace rensyuu1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                long n = long.Parse(Console.ReadLine());
+                long k1 = n;
+                long k2 = 0;
+                long k3 = 1;
+                long o = 0;
+                long n1 = n;
+                if (n == 0)
+                {
+                    break;
+                }
+                else
+                {
+                    while (k1 != 0)
+                    {
+                        //k2が桁数
+                        k2 = k2 + 1;
+                        k1 = k1 / 10;
+                    }
+                    for (long i1 = k2; i1 >= 0; i1--)
+                    {
+
+                        //桁の数を抽出するために、桁が同じ10の倍数を作成
+                        for (int i2 = 1; i2 < i1; i2++)
+                        {
+                            k3 = k3 * 10;
+                        }
+                        o = o + n1 / k3;
+                        long s1 = n1 / k3;
+                        n1 = n1 - s1 * k3;
+                        k3 = 1;
+
+                    }
+                    Console.WriteLine($"{o}");
+
+                }
+
+
+
+
+            }
+        }
+    }
+}
