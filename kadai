@@ -65,11 +65,11 @@ public class StringCheck
                 Console.WriteLine(str);
                 DateTime dt = DateTime.Now;
                 string dtnow = dt.ToString();
-                var date = DateTime.Today.Date.Year.ToString() + DateTime.Today.Date.Month.ToString() + DateTime.Today.Date.Day.ToString();
+                var date = DateTime.Today.Date.Year.ToString() + DateTime.Today.Date.Month.ToString() + DateTime.Today.Date.Day.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString();
                 //全ファイル名取得
-                //try
-                //{
-                string[] files = Directory.GetFiles(@"C:\work\実行例（挑戦）\Log", "*");
+                try
+                {
+                    string[] files = Directory.GetFiles(@"C:\work\実行例（挑戦）\Log", "*");
 
                 string newestFileName = string.Empty;
                 DateTime updateTime = DateTime.MinValue;
@@ -93,26 +93,23 @@ public class StringCheck
                 string after = logText.Replace("\n", "");
                 int ret = before.Length - after.Length;
 
-                if (ret > 3)
+                if (ret > 99)
                 {
                     File.WriteAllText($@"C:\work\実行例（挑戦）\Log\{date}log.txt", $"{dtnow} {str}" + Environment.NewLine);
-                    Console.WriteLine("a");
                 }
                 else
                 {
                     File.AppendAllText($@"C:\work\実行例（挑戦）\Log\{newestFileName}", $"{dtnow} {str}" + Environment.NewLine);
-                    Console.WriteLine("b");
                 }
-                //}
-                //catch
-                //{
-                //    string path = @"C:\work\実行例（挑戦）\Log";
-                //    DirectoryInfo di = new DirectoryInfo(path);
-                //    Console.WriteLine("a");
-                //    di.Create();
-                //    File.WriteAllText($@"C:\work\実行例（挑戦）\Log\{date}log.txt", $"{dtnow} {str}" + Environment.NewLine);
-                //}
-                break;
+            }
+                catch
+            {
+                string path = @"C:\work\実行例（挑戦）\Log";
+                DirectoryInfo di = new DirectoryInfo(path);
+                di.Create();
+                File.WriteAllText($@"C:\work\実行例（挑戦）\Log\{date}log.txt", $"{dtnow} {str}" + Environment.NewLine);
+            }
+            break;
             }
 
         }
