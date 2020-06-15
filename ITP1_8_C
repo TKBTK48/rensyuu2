@@ -1,0 +1,31 @@
+using System;
+
+namespace rensyuu1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string str1 = Console.ReadLine().Trim();
+            int num = str1.Length;
+            string str2 = str1.ToLower();
+            char[] c = str2.ToCharArray();
+            char[] small = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            int[] cn = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            for (int i1 = 0; i1 < num; i1++)
+            {
+                for (int i2 = 0; i2 < 26; i2++)
+                {
+                    if (c[i1] == small[i2])
+                    {
+                        cn[i2] = cn[i2]+1;
+                    }
+                }
+            }
+            for (int i3 = 0; i3 < 26; i3++)
+            {
+                Console.WriteLine($"{small[i3]}: {cn[i3]}");
+            }
+        }
+    }
+}
