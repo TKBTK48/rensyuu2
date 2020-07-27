@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string s1 = Console.ReadLine();
+            string p1 = Console.ReadLine();
+            string S1 = s1 + s1;
+            int num1 = S1.Length;
+            int num2 = p1.Length;
+            char[] S2 = S1.ToCharArray();
+            char[] p2 = p1.ToCharArray();
+            int TFflg;
+            int YNflg = 0;
+            for (int i1 = 0; i1 < num1 - num2; i1++)
+            {
+                TFflg = 0;
+                for (int i2 = 0; i2 < num2; i2++)
+                {
+                    if (S2[i1 + i2] == p2[i2])
+                    {
+                        TFflg = TFflg + 1;
+                    }
+                }
+                if(TFflg==num2)
+                {
+                    YNflg = 1;
+                }
+            }
+
+            if(YNflg==1)
+            {
+                Console.WriteLine("Yes");
+            }
+            else
+            {
+                Console.WriteLine("No");
+            }
+
+
+        }
+    }
+}
