@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                string S1 = Console.ReadLine();
+                if (S1 == "-")
+                {
+                    break;
+                }
+                int L1 = S1.Length;
+                char[] S2 = S1.ToCharArray();
+                int num1 = int.Parse(Console.ReadLine());
+                for (int n1 = 0; n1 < num1; n1++)
+                {
+                    int num2 = int.Parse(Console.ReadLine());
+                    char[] S3 = new char[num2];
+                    for (int i2 = 0; i2 < num2; i2++)
+                    {
+                        S3[i2] = S2[i2];
+                    }
+
+                    char[] S4 = new char[L1 - num2];
+                    for (int i3 = num2; i3 < L1; i3++)
+                    {
+                        S4[i3 - num2] = S2[i3];
+                    }
+
+                    for (int i4 = 0; i4 < L1 - num2; i4++)
+                    {
+                        S2[i4] = S4[i4];
+                    }
+
+                    for (int i5 = L1 - num2; i5 < L1; i5++)
+                    {
+                        S2[i5] = S3[i5 - L1 + num2];
+                    }
+                }
+                Console.WriteLine(S2);
+            }
+        }
+    }
+}
